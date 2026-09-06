@@ -105,25 +105,35 @@
   .blokken{
     display:grid;
     grid-template-columns:repeat(2, 1fr);
-    gap:1px;
-    background:var(--border);
-    border:1px solid var(--border);
-    border-radius:4px;
-    overflow:hidden;
+    gap:22px;
     margin-bottom:56px;
   }
   .blok{
     display:flex;
     flex-direction:column;
     gap:6px;
-    padding:22px 20px 20px;
+    padding:24px 22px 22px;
     background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:4px;
     text-decoration:none;
     color:inherit;
-    transition:background 0.15s ease;
+    transition:background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
   }
-  .blok:hover{background:var(--accent-soft);}
-  .blok:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;}
+  .blok:hover{background:var(--accent-soft);border-color:var(--accent);}
+  .blok:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .blok-illu{
+    width:112px;
+    height:auto;
+    margin-bottom:10px;
+    color:var(--accent);
+    stroke:currentColor;
+    fill:none;
+    stroke-width:1.6;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .blok-illu .vlak{fill:var(--accent-soft);}
   .blok-titel{
     font-family:'Fraunces', Georgia, serif;
     font-size:17px;
@@ -132,6 +142,44 @@
   }
   .blok-tekst{font-size:13px;color:var(--text-muted);line-height:1.5;flex:1;}
   .blok-actie{font-size:12.5px;font-weight:600;color:var(--accent);margin-top:6px;}
+
+  .blok-breed{grid-column:1/-1;}
+  .galerij-raster{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+    gap:26px 20px;
+  }
+  .galerij-item{
+    background:none;
+    border:none;
+    padding:0;
+    font:inherit;
+    color:inherit;
+    text-align:left;
+    cursor:pointer;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+  }
+  .galerij-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  .galerij-doek{
+    height:190px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+  }
+  .galerij-doek canvas{
+    height:100%;
+    width:auto;
+    max-width:100%;
+    display:block;
+    box-shadow:0 3px 10px var(--shadow);
+    transition:transform 0.15s ease;
+  }
+  .galerij-item:hover .galerij-doek canvas{transform:translateY(-3px);}
+  .galerij-titel{font-size:15px;font-weight:600;}
+  .galerij-meta{font-size:12px;color:var(--text-muted);}
+  .galerij-actie{font-size:12.5px;font-weight:600;color:var(--accent);}
 
   .sectie-kop{padding-bottom:8px;}
   .sectie-kop-rij{display:flex;align-items:baseline;justify-content:space-between;gap:16px;}
@@ -144,6 +192,47 @@
     line-height:1.6;
     max-width:60ch;
   }
+  .kantoor-opties{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:22px;
+    margin:22px 0 26px;
+  }
+  .kantoor-optie{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+    padding:20px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:4px;
+  }
+  .kantoor-optie h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-size:17px;
+    font-weight:600;
+    margin:0;
+  }
+  .kantoor-optie p{
+    margin:0;
+    font-size:14px;
+    line-height:1.55;
+    color:var(--text-muted);
+    flex:1;
+  }
+  .kantoor-illu{
+    width:100%;
+    max-width:260px;
+    height:auto;
+    color:var(--accent);
+    stroke:currentColor;
+    fill:none;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .kantoor-illu .vlak{fill:var(--accent-soft);}
   .kantoor-knop{
     display:inline-block;
     margin-top:8px;
@@ -174,6 +263,34 @@
   }
   #overTekst p:last-child{margin-bottom:0;}
   .contact-intro{margin:0 0 20px;font-size:15px;line-height:1.6;max-width:58ch;color:var(--text-muted);}
+  .contact-form{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:14px 16px;
+    align-items:end;
+    max-width:660px;
+    margin-bottom:28px;
+  }
+  .contact-form input, .contact-form textarea{
+    padding:10px 12px;
+    font-family:'Work Sans', sans-serif;
+    font-size:14px;
+    color:var(--text);
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:3px;
+    width:100%;
+  }
+  .contact-form textarea{line-height:1.5;resize:vertical;}
+  .contact-form input:focus-visible, .contact-form textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}
+  .contact-status{
+    grid-column:1/-1;
+    margin:0;
+    font-size:13.5px;
+    font-weight:500;
+    color:var(--accent);
+  }
+  .contact-status.fout{color:#B4453A;}
   .contact-rijen{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:3px;overflow:hidden;max-width:460px;}
   .contact-rij{
     display:flex;
@@ -363,6 +480,12 @@
     line-height:1.5;
     color:var(--text);
     max-width:58ch;
+  }
+  .measure-live{
+    margin:-4px 0 12px !important;
+    font-size:13px;
+    color:var(--accent) !important;
+    font-weight:500;
   }
   .measure-row{
     display:flex;
@@ -653,32 +776,88 @@
   </header>
 
   <nav class="blokken" aria-label="Onderdelen van deze pagina">
+    <a class="blok blok-breed" href="#galerij" data-paneel="galerij">
+      <svg class="blok-illu" viewBox="0 0 112 64" aria-hidden="true">
+        <rect class="vlak" x="8" y="14" width="24" height="30"/>
+        <rect x="38" y="8" width="30" height="24"/>
+        <rect class="vlak" x="38" y="36" width="30" height="14"/>
+        <rect x="74" y="12" width="28" height="34"/>
+        <line x1="4" y1="56" x2="108" y2="56"/>
+      </svg>
+      <span class="blok-titel">De galerij</span>
+      <span class="blok-tekst">Alle schilderijen op een rij, met formaat en techniek</span>
+      <span class="blok-actie">Bekijk de werken ↓</span>
+    </a>
     <a class="blok" href="#tool" data-paneel="toolBlok">
-      <span class="blok-titel">Bekijk werken in uw woning</span>
-      <span class="blok-tekst">Fotografeer uw muur en zie het schilderij op ware grootte hangen</span>
+      <svg class="blok-illu" viewBox="0 0 112 64" aria-hidden="true">
+        <line x1="4" y1="52" x2="108" y2="52"/>
+        <rect class="vlak" x="18" y="6" width="40" height="30"/>
+        <rect x="23" y="11" width="30" height="20"/>
+        <path d="M27 27l8-9 5 6 4-4 6 7"/>
+        <path d="M70 52v-9a4 4 0 0 1 4-4h22a4 4 0 0 1 4 4v9"/>
+        <path d="M70 45h30"/>
+        <path d="M9 52V40"/>
+        <path d="M9 40c-4 0-6-2-6-5s2-4 6-4 6 1 6 4-2 5-6 5z"/>
+      </svg>
+      <span class="blok-titel">Bekijk schilderij in woning of bedrijfspand</span>
+      <span class="blok-tekst">Fotografeer uw muur — thuis of op kantoor — en zie het werk op ware grootte hangen</span>
       <span class="blok-actie">Naar de proefopstelling ↓</span>
     </a>
     <a class="blok" href="#over" data-paneel="over">
+      <svg class="blok-illu" viewBox="0 0 112 64" aria-hidden="true">
+        <rect class="vlak" x="20" y="4" width="40" height="30"/>
+        <path d="M40 34v22"/>
+        <path d="M26 56l14-22 14 22"/>
+        <path d="M30 48h20"/>
+        <path d="M74 46l22-24"/>
+        <path d="M92 18l6 6-4 5-7-7z"/>
+      </svg>
       <span class="blok-titel">Wie is de kunstenares</span>
       <span class="blok-tekst">Over het werk, de materialen en het atelier</span>
       <span class="blok-actie">Lees verder ↓</span>
     </a>
     <a class="blok" href="#kantoor" data-paneel="kantoor">
+      <svg class="blok-illu" viewBox="0 0 112 64" aria-hidden="true">
+        <rect class="vlak" x="8" y="24" width="34" height="26"/>
+        <rect x="13" y="29" width="24" height="16"/>
+        <rect x="66" y="24" width="34" height="26"/>
+        <rect x="71" y="29" width="24" height="16"/>
+        <path d="M22 20Q54 2 86 20"/>
+        <path d="M86 20l-7-1m7 1l-1 7"/>
+        <line x1="4" y1="58" x2="108" y2="58"/>
+      </svg>
       <span class="blok-titel">Iedere maand ander werk op kantoor</span>
       <span class="blok-tekst">Wisselende schilderijen aan de muur bij u op kantoor</span>
       <span class="blok-actie">Hoe het werkt ↓</span>
     </a>
     <a class="blok" href="#contact" data-paneel="contact">
+      <svg class="blok-illu" viewBox="0 0 112 64" aria-hidden="true">
+        <rect class="vlak" x="16" y="12" width="62" height="40"/>
+        <path d="M16 17l31 22 31-22"/>
+        <path d="M88 24h18"/>
+        <path d="M92 34h14"/>
+        <path d="M96 44h10"/>
+      </svg>
       <span class="blok-titel">Contact voor aanschaf</span>
       <span class="blok-tekst">Prijs, beschikbaarheid, bezichtiging of een werk in opdracht</span>
       <span class="blok-actie">Neem contact op ↓</span>
     </a>
   </nav>
 
+  <section class="sectie paneel" id="galerij" hidden>
+    <div class="sectie-kop-rij">
+      <span class="eyebrow">De galerij</span>
+      <button class="btn-text paneel-sluit" type="button">Sluiten</button>
+    </div>
+    <h2>Alle werken</h2>
+    <p class="contact-intro">Klik op een schilderij om het meteen in uw eigen ruimte te bekijken.</p>
+    <div class="galerij-raster" id="galerijRaster"></div>
+  </section>
+
   <div class="paneel" id="toolBlok" hidden>
   <section class="sectie-kop" id="tool">
     <div class="sectie-kop-rij">
-      <h2>Bekijk werken in uw woning</h2>
+      <h2>Bekijk schilderij in woning of bedrijfspand</h2>
       <button class="btn-text paneel-sluit" type="button">Sluiten</button>
     </div>
     <p>Kies een schilderij, maak een foto van uw muur en zie in seconden hoe het bij u thuis hangt. Uw foto blijft op uw eigen toestel.</p>
@@ -733,6 +912,7 @@
         <div id="scaleStatus" class="scale-status"></div>
         <div class="measure-bar" id="measureBar" hidden>
           <p>Sleep de twee punten langs iets waarvan je de maat kent — de breedte van je bank, een deur (meestal 83 cm) of een raamkozijn. Vul die maat hieronder in.</p>
+          <p class="measure-live" id="measureLiveHint" hidden>Je kijkt live mee: houd je telefoon stil terwijl je meet en zet daarna het beeld vast — beweeg je het toestel, dan klopt de schaal niet meer.</p>
           <div class="measure-row">
             <label for="measureCm">Deze afstand is</label>
             <input type="number" id="measureCm" min="1" max="2000" step="1" value="83" inputmode="numeric">
@@ -783,6 +963,41 @@
     </div>
     <h2 id="kantoorTitel">Iedere maand ander werk op kantoor</h2>
     <div id="kantoorTekst"></div>
+
+    <div class="kantoor-opties">
+      <div class="kantoor-optie">
+        <svg class="kantoor-illu" viewBox="0 0 220 124" aria-hidden="true">
+          <line x1="6" y1="76" x2="214" y2="76"/>
+          <rect class="vlak" x="68" y="6" width="84" height="52"/>
+          <rect x="75" y="13" width="70" height="38"/>
+          <path d="M82 44l16-17 10 11 8-7 12 13"/>
+          <ellipse cx="110" cy="94" rx="60" ry="12"/>
+          <circle cx="42" cy="86" r="6"/>
+          <circle cx="178" cy="86" r="6"/>
+          <circle cx="80" cy="112" r="6"/>
+          <circle cx="140" cy="112" r="6"/>
+        </svg>
+        <h3>Eén groot werk</h3>
+        <p>Een formaat dat de ruimte draagt, boven de vergadertafel of achter de ontvangstbalie. Iedere maand een ander schilderij, opgehangen en weer meegenomen.</p>
+        <button class="btn-secondary kantoor-vraag" type="button" data-optie="Kantoor — één groot werk (vergaderruimte)">Vraag hiernaar</button>
+      </div>
+
+      <div class="kantoor-optie">
+        <svg class="kantoor-illu" viewBox="0 0 220 124" aria-hidden="true">
+          <rect class="vlak" x="12" y="34" width="28" height="22"/>
+          <rect x="50" y="28" width="30" height="28"/>
+          <rect class="vlak" x="90" y="36" width="26" height="20"/>
+          <rect x="126" y="28" width="30" height="28"/>
+          <rect class="vlak" x="166" y="34" width="28" height="22"/>
+          <line x1="6" y1="82" x2="214" y2="82"/>
+          <line x1="6" y1="90" x2="214" y2="90"/>
+        </svg>
+        <h3>Een reeks kleine werken</h3>
+        <p>Vijf of meer kleinere schilderijen op een rij in de gang of het trappenhuis, zodat er onderweg steeds iets nieuws te zien is.</p>
+        <button class="btn-secondary kantoor-vraag" type="button" data-optie="Kantoor — reeks kleine werken (gang)">Vraag hiernaar</button>
+      </div>
+    </div>
+
     <a class="btn-primary kantoor-knop" id="kantoorMail" href="#">Vraag de mogelijkheden aan</a>
   </section>
 
@@ -793,6 +1008,31 @@
     </div>
     <h2>Interesse in een werk?</h2>
     <p class="contact-intro">Laat weten welk schilderij het is — dan volgt de prijs, de beschikbaarheid en desgewenst een afspraak om het in het echt te zien. Een werk in opdracht kan ook.</p>
+    <form class="contact-form" id="contactForm" hidden>
+      <div class="veld">
+        <label class="veld-label" for="cfNaam">Uw naam</label>
+        <input type="text" id="cfNaam" maxlength="80" required>
+      </div>
+      <div class="veld">
+        <label class="veld-label" for="cfMail">Uw e-mailadres</label>
+        <input type="email" id="cfMail" maxlength="120" required>
+      </div>
+      <div class="veld">
+        <label class="veld-label" for="cfTel">Telefoon (optioneel)</label>
+        <input type="text" id="cfTel" maxlength="30">
+      </div>
+      <div class="veld">
+        <label class="veld-label" for="cfWerk">Om welk werk gaat het?</label>
+        <input type="text" id="cfWerk" maxlength="80">
+      </div>
+      <div class="veld veld-breed-kolom">
+        <label class="veld-label" for="cfBericht">Uw vraag of bericht</label>
+        <textarea id="cfBericht" rows="4" maxlength="1500"></textarea>
+      </div>
+      <button class="btn-primary" id="cfVerstuur" type="submit">Versturen</button>
+      <p class="contact-status" id="cfStatus" hidden></p>
+    </form>
+
     <div class="contact-rijen">
       <a class="contact-rij" id="contactMail" href="#">
         <span class="contact-label mono">E-mail</span>
@@ -3230,18 +3470,47 @@ var qrcode = function() {
     c.height = Math.round(art.hCm * PX_PER_CM);
     artCanvasCache[art.id] = c;
 
-    if(art.imgData){
+    if(art.imgData || art.fotoId){
       // eigen foto van het werk: bijgesneden op de opgegeven verhouding
       var ctx = c.getContext('2d');
       ctx.fillStyle = '#E7E1D5';
       ctx.fillRect(0,0,c.width,c.height);
+
       var img = new Image();
       img.onload = function(){
-        drawCover(ctx, img, c.width, c.height);
+        if(art.maatOnbekend && img.naturalWidth){
+          // geen maat in de bestandsnaam: verhouding van de foto aanhouden
+          art.wCm = 60;
+          art.hCm = Math.max(10, Math.round(60 * (img.naturalHeight / img.naturalWidth)));
+          art.maatOnbekend = false;
+          c.width = Math.round(art.wCm * PX_PER_CM);
+          c.height = Math.round(art.hCm * PX_PER_CM);
+          if(art === currentArt){
+            captionEl.textContent = art.title + ' (' + art.wCm + '\u00d7' + art.hCm + ' cm)';
+            resetTransform();
+          }
+          buildGallery();
+        }
+        drawCover(c.getContext('2d'), img, c.width, c.height);
         render();
         renderWerkLijst();
+        buildGalerij();
       };
-      img.src = art.imgData;
+
+      if(art.imgData){
+        img.src = art.imgData;
+      } else {
+        // de foto komt als data-url terug van het Apps Script
+        fetch(apiAdres('actie=foto&id=' + encodeURIComponent(art.fotoId)))
+          .then(function(r){ return r.ok ? r.text() : null; })
+          .then(function(dataUrl){
+            if(dataUrl && dataUrl.indexOf('data:') === 0){
+              art.imgData = dataUrl;
+              img.src = dataUrl;
+            }
+          })
+          .catch(function(){});
+      }
     } else {
       paintArtwork(c, art);
     }
@@ -3560,6 +3829,52 @@ var qrcode = function() {
       art._btn = btn;
       galleryEl.appendChild(btn);
     });
+    buildGalerij();
+  }
+
+  function buildGalerij(){
+    var raster = document.getElementById('galerijRaster');
+    if(!raster) return;
+    raster.innerHTML = '';
+
+    ARTWORKS.forEach(function(art){
+      var knop = document.createElement('button');
+      knop.className = 'galerij-item';
+      knop.type = 'button';
+
+      var doek = document.createElement('div');
+      doek.className = 'galerij-doek';
+      // kopie van het doek, zodat het origineel in stap 01 blijft staan
+      var bron = getArtCanvas(art);
+      var kopie = document.createElement('canvas');
+      kopie.width = 420;
+      kopie.height = Math.max(1, Math.round(420 * (art.hCm / art.wCm)));
+      kopie.getContext('2d').drawImage(bron, 0, 0, kopie.width, kopie.height);
+      doek.appendChild(kopie);
+      knop.appendChild(doek);
+
+      var titel = document.createElement('div');
+      titel.className = 'galerij-titel';
+      titel.textContent = art.title;
+      knop.appendChild(titel);
+
+      var meta = document.createElement('div');
+      meta.className = 'galerij-meta mono';
+      meta.textContent = (art.medium ? art.medium + ' · ' : '') + art.wCm + '×' + art.hCm + ' cm';
+      knop.appendChild(meta);
+
+      var actie = document.createElement('span');
+      actie.className = 'galerij-actie';
+      actie.textContent = 'Bekijk in uw ruimte →';
+      knop.appendChild(actie);
+
+      knop.addEventListener('click', function(){
+        if(art._btn) selectArt(art, art._btn);
+        toonPaneel('toolBlok', true);
+      });
+
+      raster.appendChild(knop);
+    });
   }
 
   function selectArt(art, btn){
@@ -3571,6 +3886,9 @@ var qrcode = function() {
     btn.classList.add('active');
     btn.setAttribute('aria-pressed','true');
     captionEl.textContent = art.title + ' (' + art.wCm + '×' + art.hCm + ' cm)';
+    var werkVeld = document.getElementById('cfWerk');
+    if(werkVeld && !werkVeld.value.trim()) werkVeld.value = art.title;
+    if(toolBlok && !toolBlok.hidden) meld('werk', art.title);
     resetTransform();
     render();
   }
@@ -3620,6 +3938,133 @@ var qrcode = function() {
     showToast('Beheer verborgen. Zet ?atelier achter het adres om terug te komen.');
   });
 
+  /* ---------- bezoek meten (anoniem, alleen tellingen) ---------- */
+  var BEZOEKER_KEY = 'hangproef.bezoeker';
+  var bezoekerId = '', bezoekerStatus = 'nieuw', sessieId = '';
+  var startTijd = Date.now(), duurGemeld = false;
+
+  (function bepaalBezoeker(){
+    try{
+      bezoekerId = localStorage.getItem(BEZOEKER_KEY) || '';
+      bezoekerStatus = bezoekerId ? 'terugkerend' : 'nieuw';
+      if(!bezoekerId){
+        bezoekerId = 'b-' + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+        localStorage.setItem(BEZOEKER_KEY, bezoekerId);
+      }
+    } catch(e){
+      bezoekerId = 'b-onbekend';
+      bezoekerStatus = 'nieuw';
+    }
+    sessieId = 's-' + Math.random().toString(36).slice(2, 10);
+  })();
+
+  function meld(type, detail, seconden){
+    if(!PAGINA.api || typeof fetch !== 'function') return;
+    var g = new URLSearchParams();
+    g.set('soort', 'stat');
+    g.set('type', type);
+    g.set('detail', detail || '');
+    g.set('bezoeker', bezoekerId);
+    g.set('sessie', sessieId);
+    g.set('status', bezoekerStatus);
+    g.set('seconden', String(seconden || 0));
+    try{
+      if(type === 'duur' && navigator.sendBeacon){
+        navigator.sendBeacon(PAGINA.api, g);
+        return;
+      }
+      fetch(PAGINA.api, {method:'POST', body:g, keepalive:true}).catch(function(){});
+    } catch(e){}
+  }
+
+  function meldDuur(){
+    if(duurGemeld) return;
+    duurGemeld = true;
+    meld('duur', '', Math.round((Date.now() - startTijd) / 1000));
+  }
+
+  window.addEventListener('pagehide', meldDuur);
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'hidden') meldDuur();
+  });
+
+  var contactSoort = 'aanschaf';
+
+  var BLOK_NAMEN = {
+    galerij: 'De galerij',
+    toolBlok: 'Schilderij in woning of bedrijfspand',
+    over: 'Wie is de kunstenares',
+    kantoor: 'Werk op kantoor',
+    contact: 'Contact voor aanschaf'
+  };
+
+  /* ---------- kantooropties doorgeven aan het contact ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.kantoor-vraag'), function(knop){
+    knop.addEventListener('click', function(){
+      var optie = knop.getAttribute('data-optie') || '';
+      var werkVeld = document.getElementById('cfWerk');
+      var formulier = document.getElementById('contactForm');
+
+      if(formulier && !formulier.hidden){
+        contactSoort = 'kantoor';
+        if(werkVeld) werkVeld.value = optie;
+        toonPaneel('contact', true);
+        var naamVeld = document.getElementById('cfNaam');
+        if(naamVeld) setTimeout(function(){ naamVeld.focus(); }, 400);
+        return;
+      }
+
+      if(PAGINA.mail){
+        window.location.href = 'mailto:' + PAGINA.mail + '?subject=' + encodeURIComponent(optie);
+        return;
+      }
+      toonPaneel('contact', true);
+    });
+  });
+
+  /* ---------- contactformulier ---------- */
+  on('contactForm', 'submit', function(e){
+    e.preventDefault();
+    var status = document.getElementById('cfStatus');
+    var knop = document.getElementById('cfVerstuur');
+    function melden(tekst, fout){
+      if(!status) return;
+      status.hidden = false;
+      status.textContent = tekst;
+      status.className = 'contact-status' + (fout ? ' fout' : '');
+    }
+
+    var naam = document.getElementById('cfNaam').value.trim();
+    var mail = document.getElementById('cfMail').value.trim();
+    if(!naam || !mail){ melden('Vul in elk geval uw naam en e-mailadres in.', true); return; }
+    if(!PAGINA.api){ melden('Het formulier is nog niet gekoppeld. Stuur zolang een e-mail.', true); return; }
+
+    var gegevens = new URLSearchParams();
+    gegevens.set('soort', contactSoort);
+    gegevens.set('naam', naam);
+    gegevens.set('email', mail);
+    gegevens.set('telefoon', document.getElementById('cfTel').value.trim());
+    gegevens.set('werk', document.getElementById('cfWerk').value.trim());
+    gegevens.set('bericht', document.getElementById('cfBericht').value.trim());
+    gegevens.set('pagina', location.href);
+
+    knop.disabled = true;
+    melden('Bezig met versturen\u2026', false);
+
+    fetch(PAGINA.api, {method:'POST', body: gegevens})
+      .then(function(r){ return r.ok ? r.text() : null; })
+      .then(function(antwoord){
+        knop.disabled = false;
+        if(antwoord === null){ melden('Versturen lukte niet. Probeer het opnieuw of stuur een e-mail.', true); return; }
+        melden('Verstuurd \u2014 u krijgt zo snel mogelijk antwoord.', false);
+        document.getElementById('contactForm').reset();
+      })
+      .catch(function(){
+        knop.disabled = false;
+        melden('Versturen lukte niet. Probeer het opnieuw of stuur een e-mail.', true);
+      });
+  });
+
   /* ---------- panelen achter de blokken ---------- */
   // Elk blok opent zijn eigen tekst; er staat er telkens één open.
   var toolBlok = document.getElementById('toolBlok');
@@ -3647,12 +4092,16 @@ var qrcode = function() {
       var doel = (id === 'toolBlok') ? document.getElementById('tool') : paneel;
       doel.scrollIntoView({behavior:'smooth', block:'start'});
     }
+    meld('blok', BLOK_NAMEN[id] || id);
+    if(id === 'toolBlok' && currentArt) meld('werk', currentArt.title);
   }
 
   Array.prototype.forEach.call(document.querySelectorAll('.blok[data-paneel]'), function(blok){
     blok.addEventListener('click', function(e){
       e.preventDefault();
-      toonPaneel(blok.getAttribute('data-paneel'), true);
+      var doelPaneel = blok.getAttribute('data-paneel');
+      if(doelPaneel === 'contact') contactSoort = 'aanschaf';
+      toonPaneel(doelPaneel, true);
     });
   });
 
@@ -3676,6 +4125,7 @@ var qrcode = function() {
     portret: '',
     mail: '',
     telefoon: '',
+    api: '',
     kantoorTitel: 'Iedere maand ander werk op kantoor',
     kantoor: 'Een kantoor met steeds hetzelfde aan de muur wordt onzichtbaar. In dit abonnement hangt er elke maand een ander schilderij bij u op kantoor: ik breng het nieuwe werk, neem het vorige mee en hang het meteen op.\n\nHandig voor een ontvangstruimte, een vergaderzaal of een gang waar veel mensen langslopen. Bevalt een werk zo goed dat het moet blijven hangen, dan kunt u het aanschaffen en verrekenen we wat u al betaald heeft.\n\nDe prijs hangt af van het aantal werken en het formaat. Vraag gerust naar de mogelijkheden.'
   };
@@ -3770,6 +4220,9 @@ var qrcode = function() {
       }
     }
 
+    var cForm = document.getElementById('contactForm');
+    if(cForm) cForm.hidden = !PAGINA.api;
+
     var mail = document.getElementById('contactMail');
     if(mail){
       if(PAGINA.mail){
@@ -3795,7 +4248,7 @@ var qrcode = function() {
   function vulPaginaFormulier(){
     var v = {pgNaam:'naam', pgEyebrow:'eyebrow', pgIntro:'intro', pgInstagram:'instagram',
              pgOverTitel:'overTitel', pgOver:'over', pgMail:'mail', pgTel:'telefoon',
-             pgKantoorTitel:'kantoorTitel', pgKantoor:'kantoor'};
+             pgKantoorTitel:'kantoorTitel', pgKantoor:'kantoor', pgApi:'api'};
     Object.keys(v).forEach(function(id){
       var el = document.getElementById(id);
       if(el) el.value = PAGINA[v[id]] || '';
@@ -3831,7 +4284,7 @@ var qrcode = function() {
     e.preventDefault();
     var v = {pgNaam:'naam', pgEyebrow:'eyebrow', pgIntro:'intro', pgInstagram:'instagram',
              pgOverTitel:'overTitel', pgOver:'over', pgMail:'mail', pgTel:'telefoon',
-             pgKantoorTitel:'kantoorTitel', pgKantoor:'kantoor'};
+             pgKantoorTitel:'kantoorTitel', pgKantoor:'kantoor', pgApi:'api'};
     Object.keys(v).forEach(function(id){
       var el = document.getElementById(id);
       if(el) PAGINA[v[id]] = el.value.trim();
@@ -4145,6 +4598,7 @@ var qrcode = function() {
       return;
     }
     if(liveBtn) liveBtn.disabled = true;
+    showToast('Camera openen…');
     navigator.mediaDevices.getUserMedia({
       video: { facingMode: {ideal: 'environment'}, width: {ideal: 1280}, height: {ideal: 960} },
       audio: false
@@ -4175,7 +4629,9 @@ var qrcode = function() {
       resizeStage();
       resetTransform();
       liveLus();
-      showToast('Richt op de muur en sleep het schilderij op zijn plek.');
+      var kaart = document.querySelector('.stage-card');
+      if(kaart) kaart.scrollIntoView({behavior:'smooth', block:'center'});
+      showToast('Richt op de muur. Sleep het schilderij, of stel eerst de schaal in met de meetlat.');
     }).catch(function(err){
       if(liveBtn) liveBtn.disabled = false;
       var naam = err && err.name;
@@ -4209,12 +4665,15 @@ var qrcode = function() {
     photo = {source: c, width: c.width, height: c.height};
     if(photoStatusEl) photoStatusEl.innerHTML = '<span class="status-pill own">Beeld vastgezet</span>';
     render();
-    showToast('Beeld vastgezet — nu kun je ook de schaal instellen.');
+    showToast('Beeld vastgezet — de ingestelde schaal blijft gelden.');
   }
 
   function stopLive(){
     stopStream();
     if(vorigePhoto){ photo = vorigePhoto; vorigePhoto = null; }
+    pxPerCm = null;
+    setMeasureMode(false);
+    updateScaleStatus();
     if(photoStatusEl) photoStatusEl.innerHTML = '<span class="status-pill example">Voorbeeldkamer wordt getoond</span>';
     resizeStage();
     resetTransform();
@@ -4241,6 +4700,8 @@ var qrcode = function() {
   function setMeasureMode(on){
     measureMode = on;
     measureBar.hidden = !on;
+    var liveHint = document.getElementById('measureLiveHint');
+    if(liveHint) liveHint.hidden = !(on && liveActief);
     if(on){
       mLine = defaultMeasureLine();
       measureBar.scrollIntoView({behavior:'smooth', block:'nearest'});
@@ -4508,6 +4969,124 @@ var qrcode = function() {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render);
   }
 
+  /* ---------- werken uit een Google Drive-map (via Apps Script) ---------- */
+  function apiAdres(parameters){
+    if(!PAGINA.api) return null;
+    return PAGINA.api + (PAGINA.api.indexOf('?') < 0 ? '?' : '&') + parameters;
+  }
+
+  function laadGoogleWerken(klaar){
+    if(!PAGINA.api || typeof fetch !== 'function') return klaar(false);
+    var afgerond = false;
+    var stop = function(gelukt){ if(!afgerond){ afgerond = true; klaar(gelukt); } };
+    setTimeout(function(){ stop(false); }, 8000);
+
+    fetch(apiAdres('actie=werken'), {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(data){
+        var lijst = data && (data.werken || data);
+        if(!Array.isArray(lijst) || !lijst.length) return stop(false);
+        ARTWORKS = lijst.map(function(bestand, i){
+          var info = maatUitNaam(bestand.naam || bestand.name || ('werk-' + i));
+          return {
+            id: 'drive-' + (bestand.id || i),
+            title: info.titel,
+            medium: info.techniek,
+            wCm: info.maat ? info.maat.w : 60,
+            hCm: info.maat ? info.maat.h : 60,
+            maatOnbekend: !info.maat,
+            fotoId: bestand.id,
+            imgData: null,
+            palette: null,
+            seed: 1
+          };
+        });
+        mapInGebruik = true;
+        stop(true);
+      })
+      .catch(function(){ stop(false); });
+  }
+
+  /* ---------- werken uit de map 'werken' in de repository ---------- */
+  var WERKEN_MAP = 'werken';
+
+  function maatUitNaam(naam){
+    var zonder = naam.replace(/\.[a-z0-9]+$/i, '');
+    var delen = zonder.split(/\s*[-–]\s*/).map(function(d){ return d.trim(); }).filter(Boolean);
+    var maat = null;
+    if(delen.length > 1){
+      var laatste = delen[delen.length-1].replace(/\s*cm$/i,'');
+      var m = laatste.match(/^(\d{1,3})\s*[x×]\s*(\d{1,3})$/i);
+      if(m){
+        maat = {w: parseInt(m[1],10), h: parseInt(m[2],10)};
+        delen.pop();
+      }
+    }
+    return {
+      titel: delen[0] || zonder,
+      techniek: delen.length > 1 ? delen.slice(1).join(' - ') : '',
+      maat: maat
+    };
+  }
+
+  function bestandNaarWerk(bestand){
+    var info = maatUitNaam(bestand.name);
+    return {
+      id: 'map-' + bestand.name.replace(/[^A-Za-z0-9]+/g,'-').toLowerCase(),
+      title: info.titel,
+      medium: info.techniek,
+      wCm: info.maat ? info.maat.w : 60,
+      hCm: info.maat ? info.maat.h : 60,
+      maatOnbekend: !info.maat,
+      imgData: WERKEN_MAP + '/' + encodeURIComponent(bestand.name),
+      palette: null,
+      seed: 1
+    };
+  }
+
+  function laadWerkenMap(klaar){
+    if(location.protocol !== 'https:' && location.protocol !== 'http:') return klaar(false);
+    var host = location.hostname.match(/^([^.]+)\.github\.io$/);
+    if(!host || typeof fetch !== 'function') return klaar(false);
+
+    var eigenaar = host[1];
+    var stukken = location.pathname.split('/').filter(Boolean);
+    var repo = stukken.length ? stukken[0] : eigenaar + '.github.io';
+    var api = 'https://api.github.com/repos/' + eigenaar + '/' + repo + '/contents/' + WERKEN_MAP;
+
+    var afgerond = false;
+    var stop = function(gelukt){ if(!afgerond){ afgerond = true; klaar(gelukt); } };
+    setTimeout(function(){ stop(false); }, 4000);
+
+    fetch(api, {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(lijst){
+        if(!Array.isArray(lijst)) return stop(false);
+        var werken = lijst
+          .filter(function(f){ return f.type === 'file' && /\.(jpe?g|png|webp|gif)$/i.test(f.name); })
+          .sort(function(a,b){ return a.name.localeCompare(b.name, 'nl'); })
+          .map(bestandNaarWerk);
+        if(!werken.length) return stop(false);
+        ARTWORKS = werken;
+        mapInGebruik = true;
+        stop(true);
+      })
+      .catch(function(){ stop(false); });
+  }
+
+  var mapInGebruik = false;
+
+  function toonMapMelding(){
+    var doel = document.getElementById('werkLijst');
+    if(!doel) return;
+    var melding = document.createElement('p');
+    melding.className = 'werk-leeg';
+    melding.textContent = PAGINA.api
+      ? 'De galerij komt nu uit de gekoppelde Google Drive-map. Wat je hier toevoegt, komt daar niet in \u2014 zet nieuwe foto\u2019s in die map.'
+      : 'De galerij komt nu uit de map \u201cwerken\u201d in je repository.';
+    doel.parentNode.insertBefore(melding, doel);
+  }
+
   /* ---------- init ---------- */
   // Collectie: eerst wat op dit apparaat is bewaard, anders werken.json
   // naast de pagina, anders de voorbeeldwerken.
@@ -4549,7 +5128,7 @@ var qrcode = function() {
       .catch(done);
   }
 
-  laadCollectie(function(){
+  function startPagina(){
     pasPaginaToe();
     vulPaginaFormulier();
     buildGallery();
@@ -4559,8 +5138,20 @@ var qrcode = function() {
     updateScaleStatus();
     selectArt(ARTWORKS[0], ARTWORKS[0]._btn);
     // rechtstreekse link naar een onderdeel, bijvoorbeeld vanaf een QR-code
-    var directe = {'#tool':'toolBlok', '#over':'over', '#kantoor':'kantoor', '#contact':'contact'};
+    var directe = {'#galerij':'galerij', '#tool':'toolBlok', '#over':'over', '#kantoor':'kantoor', '#contact':'contact'};
+    meld('pagina', document.title);
     if(directe[location.hash]) toonPaneel(directe[location.hash], true);
+    if(mapInGebruik) toonMapMelding();
+  }
+
+  // De map 'werken' in de repository gaat voor: wat daarin staat, is de galerij.
+  // Volgorde: een gekoppelde Drive-map gaat voor, dan een map in de repository,
+  // anders wat er in dit bestand of op dit apparaat is opgeslagen.
+  laadCollectie(function(){
+    laadGoogleWerken(function(gelukt){
+      if(gelukt) return startPagina();
+      laadWerkenMap(function(){ startPagina(); });
+    });
   });
 
   var resizeTimer = null;
