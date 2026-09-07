@@ -3643,16 +3643,33 @@ var qrcode = function() {
       if(art.imgData){
         img.src = art.imgData;
       } else {
-        // de foto komt als data-url terug van het Apps Script
+        // de foto komt als data-url terug van het Apps Script;
+        // lukt dat niet, dan proberen we de miniatuur van Drive zelf
+        var terugval = function(){
+          img.crossOrigin = 'anonymous';
+          img.onerror = function(){
+            var los = new Image();
+            los.onload = function(){
+              drawCover(c.getContext('2d'), los, c.width, c.height);
+              exportGeblokkeerd = true;
+              renderWerkLijst();
+            };
+            los.src = 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(art.fotoId) + '&sz=w1200';
+          };
+          img.src = 'https://lh3.googleusercontent.com/d/' + encodeURIComponent(art.fotoId) + '=w1200';
+        };
+
         fetch(apiAdres('actie=foto&id=' + encodeURIComponent(art.fotoId)))
           .then(function(r){ return r.ok ? r.text() : null; })
           .then(function(dataUrl){
             if(dataUrl && dataUrl.indexOf('data:') === 0){
               art.imgData = dataUrl;
               img.src = dataUrl;
+            } else {
+              terugval();
             }
           })
-          .catch(function(){});
+          .catch(terugval);
       }
     } else {
       paintArtwork(c, art);
@@ -5159,6 +5176,10 @@ var qrcode = function() {
   }
 
   document.getElementById('saveBtn').addEventListener('click', function(){
+    if(exportGeblokkeerd){
+      showToast('Opslaan lukt niet met foto\u2019s die rechtstreeks van Drive komen.');
+      return;
+    }
     var scaleFactor = photo.width / stageW;
     var exportCanvas = document.createElement('canvas');
     exportCanvas.width = photo.width;
@@ -5438,6 +5459,7 @@ var qrcode = function() {
   }
 
   var mapInGebruik = false;
+  var exportGeblokkeerd = false;
 
   function toonMapMelding(){
     var doel = document.getElementById('werkLijst');
