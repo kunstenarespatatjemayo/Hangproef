@@ -10,7 +10,7 @@
   img{max-width:100%;}
   [hidden]{display:none!important;}
 </style>
-<title>Hangproef</title>
+<title>Schilderij in eigen woning</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
@@ -1008,7 +1008,7 @@
     </div>
   </section>
 
-  <p class="tool-note">Hangproef is een hulpmiddel om een indruk te krijgen van kleur en schaal — het definitieve resultaat hangt af van licht, muurkleur en het echte lijstwerk. Vragen over een specifiek werk of maatwerkformaat? Neem contact op met het atelier.</p>
+  <p class="tool-note">Deze proefopstelling is een hulpmiddel om een indruk te krijgen van kleur en schaal — het definitieve resultaat hangt af van licht, muurkleur en het echte lijstwerk. Vragen over een specifiek werk of maatwerkformaat? Neem contact op met het atelier.</p>
   </div>
 
   <section class="sectie paneel" id="over" hidden>
@@ -5035,7 +5035,7 @@ var qrcode = function() {
   });
 
   function trySave(blob){
-    saveBlob(blob, slug(currentArt.title) + '-hangproef.png');
+    saveBlob(blob, slug(currentArt.title) + '-in-eigen-woning.png');
   }
 
   // Binnen Claude loopt het opslaan via de downloads-capability; op een eigen
@@ -5124,7 +5124,7 @@ var qrcode = function() {
   on('qrPrintBtn', 'click', function(){ window.print(); });
   on('qrSaveBtn', 'click', function(){
     qrCanvas.toBlob(function(blob){
-      saveBlob(blob, 'hangproef-qr-code.png');
+      saveBlob(blob, 'qr-code-schilderij-in-eigen-woning.png');
     }, 'image/png');
   });
 
