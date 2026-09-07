@@ -1,4 +1,4 @@
-# Hangproef
+# Schilderij in woning
 
 Pagina waarop bezoekers de schilderijen bekijken, ze met hun camera in hun eigen
 woning of bedrijfspand passen, en contact opnemen.
